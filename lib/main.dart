@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'chatbot.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,13 +27,10 @@ class MyApp extends StatelessWidget {
         '/pageOne': (context) => PageOne(),
         '/pageTwo': (context) => PageTwo(),
         '/pageThree': (context) => PageThree(),
+        '/chatbot': (context) => ChatScreen(),
       },
     );
   }
-}
-
-TextStyle modernTextStyle() {
-  return GoogleFonts.playfairDisplay(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white);
 }
 
 class MyHomePage extends StatelessWidget {
@@ -40,15 +38,27 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('VigilantEye Home', style: GoogleFonts.playfairDisplay()),
-        backgroundColor: Colors.deepPurple,
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Image.asset(
+                'images/vigilant_eye.webp', // Replace with your logo image path
+                height: 40, // Set the height of your logo
+                width: 40, // Set the width of your logo
+              ),
+            ),
+            Text('VigilantEye Home', style: GoogleFonts.workSans()),
+          ],
+        ),
+        backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.grey[900],
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Text(
-            'VigilantEye: Advanced Object Detection for Vapes, Cigarettes, and Contraband.',
+            'VigilantEye: Advanced Object Detection for Weapon Detection in School.',
             style: modernTextStyle(),
             textAlign: TextAlign.center,
           ),
@@ -74,19 +84,28 @@ class MyHomePage extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, '/pageThree'),
               tooltip: 'Go to Page Three',
             ),
+            IconButton(
+              icon: Icon(Icons.chat, color: Colors.white),
+              onPressed: () => Navigator.pushNamed(context, '/chatbot'),
+              tooltip: 'Go to Chatbot',
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.home),
         onPressed: () {
-          // This will pop to the first route in the stack, which is the home page.
           Navigator.of(context).popUntil((route) => route.isFirst);
         },
         tooltip: 'Back to Home',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+
+  TextStyle modernTextStyle() {
+    return GoogleFonts.playfairDisplay(
+        fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white);
   }
 }
 
@@ -95,7 +114,8 @@ class PageOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('VigilantEye Security', style: GoogleFonts.playfairDisplay()),
+        title:
+            Text('VigilantEye Security', style: GoogleFonts.playfairDisplay()),
         backgroundColor: Colors.deepPurple,
       ),
       backgroundColor: Colors.grey[900],
@@ -129,6 +149,11 @@ class PageOne extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, '/pageThree'),
               tooltip: 'Go to Page Three',
             ),
+            IconButton(
+              icon: Icon(Icons.chat, color: Colors.white),
+              onPressed: () => Navigator.pushNamed(context, '/chatbot'),
+              tooltip: 'Go to Chatbot',
+            ),
           ],
         ),
       ),
@@ -141,10 +166,11 @@ class PageTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('VigilantEye Detection', style: GoogleFonts.playfairDisplay()),
+        title:
+            Text('VigilantEye Detection', style: GoogleFonts.playfairDisplay()),
         backgroundColor: Colors.deepPurple,
       ),
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.deepPurple,
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(20),
@@ -175,6 +201,11 @@ class PageTwo extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, '/pageThree'),
               tooltip: 'Go to Page Three',
             ),
+            IconButton(
+              icon: Icon(Icons.chat, color: Colors.white),
+              onPressed: () => Navigator.pushNamed(context, '/chatbot'),
+              tooltip: 'Go to Chatbot',
+            ),
           ],
         ),
       ),
@@ -187,7 +218,8 @@ class PageThree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('VigilantEye Analytics', style: GoogleFonts.playfairDisplay()),
+        title:
+            Text('VigilantEye Analytics', style: GoogleFonts.playfairDisplay()),
         backgroundColor: Colors.deepPurple,
       ),
       backgroundColor: Colors.grey[900],
@@ -221,9 +253,19 @@ class PageThree extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, '/pageThree'),
               tooltip: 'Go to Page Three',
             ),
+            IconButton(
+              icon: Icon(Icons.chat, color: Colors.white),
+              onPressed: () => Navigator.pushNamed(context, '/chatbot'),
+              tooltip: 'Go to Chatbot',
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+TextStyle modernTextStyle() {
+  return GoogleFonts.playfairDisplay(
+      fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white);
 }
